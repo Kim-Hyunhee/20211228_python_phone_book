@@ -33,3 +33,18 @@ def add_phone_num():
     # 안내 문구
     print('전화번호 등록이 완료 되었습니다.') # 2초 가량 대기 후 메뉴로 이동
     sleep(2)
+    
+    
+# 별도 기능 추가 - 저장된 목록 출력하기
+def show_all_phone_num():
+    # phone_book.csv 파일 로드 => 한 줄씩 반복 => , 로 분해(정보 추출)
+    with open('phone_book.csv', 'r') as file:
+        # 받아온 파일의 내용을 리스트로 (한 줄씩)
+        line_list = file.readlines()
+        
+        # 임시 : 리스트를 하나하나 출력 (반복문 활용)
+        for line in line_list:
+            
+            line = line.strip()  # 마지막 줄 바꿈 제거
+            
+            print(line)
