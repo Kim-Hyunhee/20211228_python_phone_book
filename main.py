@@ -1,4 +1,4 @@
-from phone_book import print_menu, add_phone_num, show_all_phone_num  
+from phone_book import print_menu, add_phone_num, show_all_phone_num, remove_all  
 
 from time import sleep
 
@@ -13,7 +13,8 @@ while True:
     elif num == 2:        
         show_all_phone_num()
     elif num == 3:
-        pass  # 모든 번호 삭제하는 기능
+        # 새로 추가된 remove_all 함수 실행
+        remove_all()
     else :        
         print('잘못된 입력입니다. 다시 입력해주세요.') 
         sleep(2)          
