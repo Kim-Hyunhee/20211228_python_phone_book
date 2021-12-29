@@ -17,6 +17,7 @@ def add_phone_num():
     name = input('이름 : ')
     phone_num = input('전화번호 : ')
     memo = input('특이사항 : ')
+    
     with open('phone_book.csv', 'a') as file:      
         input_line = f'{name},{phone_num},{memo}\n'
         file.write(input_line)        
@@ -26,6 +27,7 @@ def add_phone_num():
 def show_all_phone_num():
     with open('phone_book.csv', 'r') as file:
         line_list = file.readlines()
+        
         for line in line_list:
             line = line.strip() 
             info_list = line.split(',')
@@ -37,6 +39,7 @@ def show_all_phone_num():
 def remove_all():
     with open('phone_book.csv','w') as f:
         pass
+    
     print('모든 연락처가 삭제되었습니다.')
     sleep(2)
     
@@ -44,8 +47,10 @@ def remove_all():
 def search_and_view_contact():
     print('------ 사용자 검색 ------')
     search_name = input('조회할 사용자 이름 : ')
+    
     with open('phone_book.csv','r') as file:
         line_list = file.readlines()        
+        
         for line in line_list:
             line = line.strip()
             if f'{search_name},' in line:                
@@ -67,6 +72,9 @@ def remove_contact_by_position():
         # readlines 활용 => 한줄씩 목록으로
         contact_list = f.readlines()
         # 특정 위치의 연락처만 다뤄보자
-        target_contact = contact_list[position]
-
-        print(target_contact)        
+        target_contact = contact_list[position].strip()  # str값에서만 이용할 수 있는 strip 사용 가능
+        infos = target_contact.split(',')
+        # 연락처 객체로 변환
+        remove_contact = ContactInfo(infos[0],infos[1],infos[2])
+        
+        # 이 사람을 삭제하고 싶은 게 맞는지? 확인받아보자       
